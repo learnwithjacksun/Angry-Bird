@@ -5,7 +5,6 @@ import Footer from "./Components/UI/Footer";
 
 const App = () => {
   const [coin, setCoin] = useState(() => {
-    // Retrieve coin amount from local storage or default to 0
     const savedCoin = localStorage.getItem("coin");
     return savedCoin !== null ? parseInt(savedCoin, 10) : 0;
   });
@@ -13,7 +12,6 @@ const App = () => {
   const [showCounts, setShowCounts] = useState([]);
 
   useEffect(() => {
-    // Save coin amount to local storage whenever it changes
     localStorage.setItem("coin", coin);
   }, [coin]);
 

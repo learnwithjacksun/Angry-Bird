@@ -1,13 +1,14 @@
 import { motion } from "framer-motion"
 import PropTypes from "prop-types";
-import bird from "../../assets/coin.png"
+import bird from "../../assets/angrybird.png"
 const Tap = ({handleShowCount, showCounts}) => {
   return (
       <>
       <div className="flex items-center justify-center">
           <div className="relative">
             <img
-              src={bird}
+            src={bird}
+            width={200}
               alt="Coin Tap"
               className="active:scale-75 duration-200"
               onClick={handleShowCount}
