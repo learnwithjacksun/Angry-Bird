@@ -42,7 +42,7 @@ const App = () => {
         <Tap handleShowCount={handleShowCount} showCounts={showCounts} />
         
         <footer className="flex items-center justify-center">
-          <ul className="flex items-center justify-center bg-medium p-2 gap-2 rounded-xl shadow-2xl border border-light">
+          <ul className="flex items-center justify-center bg-medium p-2 gap-2 rounded-2xl shadow-2xl border border-light">
             {items.map((item, index) => (
               <li
                 key={index}
