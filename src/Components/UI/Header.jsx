@@ -27,7 +27,7 @@ const Header = ({ increaseCount, coin, count, clearCoin }) => {
     <>
       <header className="flex flex-col">
         <div className="flex justify-between items-center pb-4 border-b border-medium">
-          <h2 className="font-medium text-xl">
+          <h2 className="font-medium text-base">
             Hey, <span className="text-sub">Angry Bird!</span>
           </h2>
           <button
