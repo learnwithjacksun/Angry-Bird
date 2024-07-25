@@ -13,7 +13,7 @@ const Modal = ({ toggleModal }) => {
           onClick={toggleModal}
           className="h-screen absolute w-full bg-[rgba(0,0,0,0.5)]"
         >
-          <div className="bg-medium absolute bottom-[5rem] left-1/2 -translate-x-1/2 rounded-2xl p-4 border border-light w-[90%] md:w-[300px] mx-auto z-[999px]">
+          <div className="bg-medium absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-2xl p-4 border border-light w-[90%] md:w-[300px] mx-auto z-[999px]">
             <div className="text-2xl font-semibold">Read:</div>
             <p className="py-4">
               Click on{" "}

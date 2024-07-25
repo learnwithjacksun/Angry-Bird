@@ -1,19 +1,21 @@
-import { useState } from "react";
-import Icon from "./Components/Icon";
+import { useState, useEffect } from "react";
 import Header from "./Components/UI/Header";
 import Tap from "./Components/UI/Tap";
-
-const items = [
-  { icon: "check_circle", label: "Tasks" },
-  { icon: "add", label: "Tap" },
-  { icon: "bomb", label: "Boost" },
-  { icon: "leaderboard", label: "Stats" },
-];
+import Footer from "./Components/UI/Footer";
 
 const App = () => {
-  const [coin, setCoin] = useState(0);
+  const [coin, setCoin] = useState(() => {
+    // Retrieve coin amount from local storage or default to 0
+    const savedCoin = localStorage.getItem("coin");
+    return savedCoin !== null ? parseInt(savedCoin, 10) : 0;
+  });
   const [count, setCount] = useState(1);
   const [showCounts, setShowCounts] = useState([]);
+
+  useEffect(() => {
+    // Save coin amount to local storage whenever it changes
+    localStorage.setItem("coin", coin);
+  }, [coin]);
 
   const handleShowCount = () => {
     setCoin((prev) => prev + count);
@@ -35,25 +37,17 @@ const App = () => {
     setCount((prev) => prev + 1);
   };
 
+  const clearCoin = () => {
+    localStorage.removeItem("coin");
+    setCoin(0);
+  };
+
   return (
     <>
       <div className="h-screen w-[90%] md:w-[480px] mx-auto flex flex-col justify-between py-4">
-        <Header increaseCount={increaseCount} coin={coin} count={count} />
+        <Header increaseCount={increaseCount} coin={coin} count={count} clearCoin={clearCoin} />
         <Tap handleShowCount={handleShowCount} showCounts={showCounts} />
-        
-        <footer className="flex items-center justify-center">
-          <ul className="flex items-center justify-center bg-medium p-2 gap-2 rounded-2xl shadow-2xl border border-light">
-            {items.map((item, index) => (
-              <li
-                key={index}
-                className="flex flex-col items-center justify-center rounded-lg bg-light text-sm h-14 w-14"
-              >
-                <Icon label={item.icon} style="text-xl" />
-                <span>{item.label}</span>
-              </li>
-            ))}
-          </ul>
-        </footer>
+        <Footer />
       </div>
     </>
   );

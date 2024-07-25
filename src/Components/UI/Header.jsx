@@ -6,7 +6,7 @@ import { AnimatePresence } from "framer-motion";
 
 const f = new Intl.NumberFormat("en-US");
 
-const Header = ({ increaseCount, coin, count }) => {
+const Header = ({ increaseCount, coin, count, clearCoin }) => {
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
@@ -36,13 +36,16 @@ const Header = ({ increaseCount, coin, count }) => {
             <span>Collect Wallet</span>
           </button>
         </div>
-        <div className="text-center mt-4 ">
+        <div className="text-center mt-4 relative">
           <h1 className="text-3xl md:text-4xl">🏆{f.format(coin)}</h1>
           <div
             onClick={increaseCount}
             className="bg-medium flex cursor-pointer items-center justify-center border border-light mt-2 py-1 w-1/2 mx-auto rounded-3xl"
           >
             <span className="text-sub">Amount per tap: +{count}</span>
+          </div>
+          <div onClick={clearCoin} className="absolute right-2 top-0 h-10 w-10 flex items-center justify-center bg-medium rounded-full border border-light">
+            <Icon label="refresh" style="text-sub" />
           </div>
         </div>
       </header>
@@ -58,6 +61,7 @@ Header.propTypes = {
   increaseCount: PropTypes.func.isRequired,
   coin: PropTypes.number.isRequired,
   count: PropTypes.number.isRequired,
+  clearCoin: PropTypes.func.isRequired
 };
 
 export default Header;
