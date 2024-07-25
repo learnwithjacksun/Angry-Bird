@@ -3,11 +3,12 @@ import Icon from "../Icon";
 import { useEffect, useState } from "react";
 import Modal from "./Modal";
 import { AnimatePresence } from "framer-motion";
-
+import Null from "./Null";
 const f = new Intl.NumberFormat("en-US");
 
 const Header = ({ increaseCount, coin, count, clearCoin }) => {
   const [showModal, setShowModal] = useState(false);
+  const [connect, setConnect] = useState(false)
 
   useEffect(() => {
     const timer1 = setTimeout(() => {
@@ -29,7 +30,9 @@ const Header = ({ increaseCount, coin, count, clearCoin }) => {
           <h2 className="font-medium text-xl">
             Hey, <span className="text-sub">Angry Bird!</span>
           </h2>
-          <button className="btn-primary px-4 py-1 rounded-full">
+          <button
+          onClick={() => setConnect(true)}
+            className="btn-primary px-4 py-1 rounded-full">
             <div>
               <Icon label="wallet" style="text-xl" />
             </div>
@@ -52,6 +55,10 @@ const Header = ({ increaseCount, coin, count, clearCoin }) => {
 
       <AnimatePresence>
         {showModal && <Modal toggleModal={() => setShowModal(false)} />}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {connect && <Null toggleModal={() => setConnect(false)} />}
       </AnimatePresence>
     </>
   );
