@@ -1,0 +1,22 @@
+
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+  user-select: none;
+}
+
+
+@layer utilities{
+  .btn-primary{
+    @apply bg-gradient-to-tr from-[#2d83ec] to-[#1ac9ff] text-white btn
+  }
+  .btn{
+    @apply flex items-center justify-center font-medium gap-2 text-sm
+  }
+
+}
+
