@@ -29,7 +29,6 @@ const App = () => {
     setTimeout(() => {
       setShowCounts((prev) => prev.filter((c) => c.id !== newCount.id));
     }, 1000);
-    console.log("click");
   };
 
   const increaseCount = () => {
