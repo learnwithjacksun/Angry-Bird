@@ -14,7 +14,7 @@ const Footer = () => {
   
   return (
     <>
-      <footer className="flex items-center justify-center">
+      <footer className="flex items-center justify-center flex-col">
         <ul className="flex items-center justify-center bg-medium p-2 gap-2 rounded-2xl shadow-2xl border border-light">
           {items.map((item, index) => (
             <li
@@ -27,8 +27,8 @@ const Footer = () => {
             </li>
           ))}
         </ul>
+        <p className="text-sm text-sub mt-2">built with 💘 by <a className="text-primary" href="https://github.com/learnwithjacksun/Angry-Bird">Gift Jacksun <i className="fa-brands fa-github"></i></a></p>
       </footer>
-
       <AnimatePresence>
         {showModal && <Null toggleModal={() => setShowModal(false)} />}
       </AnimatePresence>

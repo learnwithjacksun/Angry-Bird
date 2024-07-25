@@ -43,9 +43,9 @@ const Header = ({ increaseCount, coin, count, clearCoin }) => {
           <h1 className="text-3xl md:text-4xl">🏆{f.format(coin)}</h1>
           <div
             onClick={increaseCount}
-            className="bg-medium flex cursor-pointer items-center justify-center border border-light mt-2 py-1 w-1/2 mx-auto rounded-3xl"
+            className="bg-medium flex cursor-pointer items-center justify-center border border-light mt-2 py-1 w-[70%] mx-auto rounded-3xl"
           >
-            <span className="text-sub">Amount per tap: +{count}</span>
+            <span className="text-sub text-sm">Amount per tap: +{count}</span>
           </div>
           <div onClick={clearCoin} className="absolute right-2 top-0 h-10 w-10 flex items-center justify-center bg-medium rounded-full border border-light">
             <Icon label="refresh" style="text-sub" />
