@@ -4,12 +4,17 @@ import { useEffect, useState } from "react";
 import Modal from "./Modal";
 import { AnimatePresence } from "framer-motion";
 import Null from "./Null";
+import WebApp from "@twa-dev/sdk";
 const f = new Intl.NumberFormat("en-US");
-
 const Header = ({ increaseCount, coin, count, clearCoin }) => {
   const [showModal, setShowModal] = useState(false);
   const [connect, setConnect] = useState(false)
-
+  const [user, setUser] = useState()
+  useEffect(() => {
+    if (WebApp.initDataUnsafe.user) {
+      setUser(WebApp.initDataUnsafe)
+    }
+  },[])
   useEffect(() => {
     const timer1 = setTimeout(() => {
       setShowModal(true);
@@ -28,7 +33,7 @@ const Header = ({ increaseCount, coin, count, clearCoin }) => {
       <header className="flex flex-col">
         <div className="flex justify-between items-center pb-4 border-b border-medium">
           <h2 className="font-medium text-base">
-            Hey, <span className="text-sub">Angry Bird!</span>
+            Hey, <span className="text-sub">{user? user:"Angry Bird"}</span>
           </h2>
           <button
           onClick={() => setConnect(true)}
