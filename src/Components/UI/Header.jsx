@@ -20,7 +20,7 @@ const Header = ({ increaseCount, coin, count, clearCoin }) => {
       setShowModal(true);
       const timer2 = setTimeout(() => {
         setShowModal(false);
-      }, 2500);
+      }, 3500);
 
       return () => clearTimeout(timer2);
     }, 2500);

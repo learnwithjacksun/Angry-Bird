@@ -1,6 +1,15 @@
+import WebApp from "@twa-dev/sdk";
 import { motion } from "framer-motion";
 import PropTypes from "prop-types";
+import { useEffect, useState } from "react";
 const Modal = ({ toggleModal }) => {
+  const [user, setUser] = useState()
+  useEffect(() => {
+    if (WebApp.initDataUnsafe.user) {
+      setUser(WebApp.initDataUnsafe.user)
+    }
+  },[])
+
   return (
     <>
       <motion.div
@@ -14,10 +23,12 @@ const Modal = ({ toggleModal }) => {
           className="h-screen absolute w-full bg-[rgba(0,0,0,0.5)]"
         >
           <div className="bg-medium absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-2xl p-4 border border-light w-[90%] md:w-[300px] mx-auto z-[999px]">
-            <div className="text-2xl font-semibold">Read:</div>
+            <div className="font-semibold">
+              <p className="text-xl">Hello, <span className="text-sub">{user? `${user.first_name} ${user.last_name}` : "User"}</span></p>
+            </div>
             <p className="py-4">
               Click on{" "}
-              <span className="text-sub">&quot;Amount Per Tap&quot;</span> to
+              <span className="text-sub bg-light px-1 rounded-full">Amount Per Tap</span> to
               increase your tapping power!
             </p>
             <div className="flex justify-end">
