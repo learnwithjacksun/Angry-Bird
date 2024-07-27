@@ -12,7 +12,7 @@ const Header = ({ increaseCount, coin, count, clearCoin }) => {
   const [user, setUser] = useState()
   useEffect(() => {
     if (WebApp.initDataUnsafe.user) {
-      setUser(WebApp.initDataUnsafe)
+      setUser(WebApp.initDataUnsafe.user)
     }
   },[])
   useEffect(() => {
@@ -55,7 +55,7 @@ const Header = ({ increaseCount, coin, count, clearCoin }) => {
             <span className="text-sub text-sm">Amount per tap: +{count}</span>
           </div>
           <div onClick={clearCoin} className="absolute right-2 top-0 h-10 w-10 flex items-center justify-center bg-medium rounded-full border border-light">
-            <Icon label="refresh" style="text-sub" />
+            <Icon label="refresh" style="text-sub"/>
           </div>
         </div>
       </header>
