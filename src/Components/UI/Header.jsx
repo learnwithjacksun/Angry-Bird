@@ -28,12 +28,14 @@ const Header = ({ increaseCount, coin, count, clearCoin }) => {
     return () => clearTimeout(timer1);
   }, []);
 
+  console.log(user);
+
   return (
     <>
       <header className="flex flex-col">
         <div className="flex justify-between items-center pb-4 border-b border-medium">
           <h2 className="font-medium text-base">
-            Hey, <span className="text-sub">{user? user:"Angry Bird"}</span>
+            Hey, <span className="text-sub">{user? user.username: "Angry Bird"}</span>
           </h2>
           <button
           onClick={() => setConnect(true)}
